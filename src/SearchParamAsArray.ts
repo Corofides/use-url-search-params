@@ -1,10 +1,6 @@
-import { SearchParamsContext } from "URLSearchParamsContext";
 
-export interface URLSearchParamsProviderProps {
-    children?: React.ReactNode;
-}
 
-const getSearchParamsAsArray = () => {
+export getSearchParamsAsArray = () => {
     let searchParamsArray = [];
     let search = window.location.search;
 
@@ -29,20 +25,4 @@ const getSearchParamsAsArray = () => {
 
     return searchParamsArray;
 
-}
-
-export const URLSearchParamsProvider = (props: SearchParamsProviderProps) => {
-  const {
-    children
-  } = props;
-
-  const [params, setParams] = useState({});
-  let searchParams = getSearchParamsAsArray();
-
-
-  return (
-    <SearchParamsContext.Provider value={params}>
-      {children}
-    </SearchParamsContext.Provider>
-  )
 }
