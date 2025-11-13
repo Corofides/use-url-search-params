@@ -1,6 +1,6 @@
 
 
-export getSearchParamsAsArray = () => {
+export const getSearchParamsAsArray = () => {
     let searchParamsArray = [];
     let search = window.location.search;
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import { URLSearchParamsProvider } from './URLSearchParamsProvider';
 
 const MyComponent = () => {
     return (
@@ -8,4 +9,7 @@ const MyComponent = () => {
     );
 };
 
-export default MyComponent;
+/*export default {
+    URLSearchParamsProvider;
+}; //MyComponent;*/
+export * from './URLSearchParamsProvider';;

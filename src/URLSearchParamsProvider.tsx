@@ -1,11 +1,17 @@
-import { SearchParamsContext } from "URLSearchParamsContext";
+import React, { useState } from 'react';
+import { URLSearchParamsContext } from "./URLSearchParamsContext";
 
 export interface URLSearchParamsProviderProps {
     children?: React.ReactNode;
 }
 
+export interface SearchParam {
+    name: string,
+    value: string
+}
+
 const getSearchParamsAsArray = () => {
-    let searchParamsArray = [];
+    let searchParamsArray: SearchParam[] = [];
     let search = window.location.search;
 
     if (search.length === 0) {
@@ -21,7 +27,7 @@ const getSearchParamsAsArray = () => {
     searchParamsArray = searchParts[1].split('&').map((parameter: string) => {
         const nameValue = parameter.split('=');
         const [name, value] = nameValue;
-        const paramObject = {};
+        const paramObject: SearchParam = {};
 
         paramObject[name] = value;
 
@@ -31,7 +37,7 @@ const getSearchParamsAsArray = () => {
 
 }
 
-export const URLSearchParamsProvider = (props: SearchParamsProviderProps) => {
+export const URLSearchParamsProvider = (props: URLSearchParamsProviderProps) => {
   const {
     children
   } = props;
@@ -41,8 +47,8 @@ export const URLSearchParamsProvider = (props: SearchParamsProviderProps) => {
 
 
   return (
-    <SearchParamsContext.Provider value={params}>
+    <URLSearchParamsContext.Provider value={params}>
       {children}
-    </SearchParamsContext.Provider>
+    </URLSearchParamsContext.Provider>
   )
 }
